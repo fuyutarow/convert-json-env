@@ -31,8 +31,9 @@ $ cat example-firebaseConfig.json
 }
 ```
 
+### Case 1. Export environment variables.
 ```sh
-$convert-json-env example-firebaseConfig.json --prefix="export "
+$ convert-json-env example-firebaseConfig.json --prefix="export "
 ✅ example-firebaseConfig.env created.
 
 $ cat example-firebaseConfig.env
@@ -45,8 +46,9 @@ export messagingSenderId='123456789012'
 export appId='1:234567890124:web:1234567890abcdef'
 ```
 
+### Case 2. Environment variables in Vue application.
 ```sh
-$convert-json-env example-firebaseConfig.json --out=.local.env --prefix=VUE_APP_
+$ convert-json-env example-firebaseConfig.json --out=.local.env --prefix=VUE_APP_
 ✅ .local.env created.
 
 $ cat .env.local
@@ -57,7 +59,22 @@ VUE_APP_projectId='myapp-1234a'
 VUE_APP_storageBucket='myapp-1234a.appspot.com'
 VUE_APP_messagingSenderId='123456789012'
 VUE_APP_appId='1:234567890124:web:1234567890abcdef'
-```````
+```
+
+### Case 3. Standard output for code embedded in javascript.
+In this case, no files are output.
+```sh
+$ convert-json-env example-firebaseConfig.json --prefix=VUE_APP_ --embed
+{
+  apiKey: VUE_APP_apiKey,
+  authDomain: VUE_APP_authDomain,
+  databaseURL: VUE_APP_databaseURL,
+  projectId: VUE_APP_projectId,
+  storageBucket: VUE_APP_storageBucket,
+  messagingSenderId: VUE_APP_messagingSenderId,
+  appId: VUE_APP_appId
+}
+```
 
 ## All CLI Options
 
