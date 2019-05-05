@@ -29,8 +29,25 @@ $ cat example-firebaseConfig.json
     "messagingSenderId": "123456789012",
     "appId": "1:234567890124:web:1234567890abcdef"
 }
+```
 
-$ convert-json-env example-firebaseConfig.json --out=.env.local --prefix=VUE_APP_
+```sh
+$convert-json-env example-firebaseConfig.json --prefix="export "
+✅ example-firebaseConfig.env created.
+
+$ cat example-firebaseConfig.env
+export apiKey='abcdefghijklmnopqrstuvwxyz1234567890ABC'
+export authDomain='myapp-1234a.firebaseapp.com'
+export databaseURL='https://myapp-1234a.firebaseio.com'
+export projectId='myapp-1234a'
+export storageBucket='myapp-1234a.appspot.com'
+export messagingSenderId='123456789012'
+export appId='1:234567890124:web:1234567890abcdef'
+```
+
+```sh
+$convert-json-env example-firebaseConfig.json --out=.local.env --prefix=VUE_APP_
+✅ .local.env created.
 
 $ cat .env.local
 VUE_APP_apiKey='abcdefghijklmnopqrstuvwxyz1234567890ABC'
