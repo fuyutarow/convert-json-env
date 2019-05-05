@@ -1,0 +1,9 @@
+{
+    "apiKey": "abcdefghijklmnopqrstuvwxyz1234567890ABC",
+    "authDomain": "myapp-1234a.firebaseapp.com",
+    "databaseURL": "https://myapp-1234a.firebaseio.com",
+    "projectId": "myapp-1234a",
+    "storageBucket": "myapp-1234a.appspot.com",
+    "messagingSenderId": "123456789012",
+    "appId": "1:234567890124:web:1234567890abcdef"
+}

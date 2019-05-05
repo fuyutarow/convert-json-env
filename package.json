@@ -1,0 +1,26 @@
+{
+  "name": "convert-json-env",
+  "version": "1.0.2",
+  "description": "A CLI tool for converting JSON to env file.",
+  "main": "index.js",
+  "bin": {
+    "convert-json-env": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fuyutarow/convert-json-env.git"
+  },
+  "keywords": [
+    "cli",
+    "json",
+    "env"
+  ],
+  "author": "fuyutarow",
+  "license": "MIT",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  }
+}
