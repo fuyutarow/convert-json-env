@@ -23,16 +23,19 @@ if (args.help || args.h) {
 }
 
 const inputFile = args._[0];
+
+if (!inputFile) {
+  console.log('❌ Invalid usage. Try `convert-json-env --help` for help.');
+  return;
+}
+
 const inputFileExt = inputFile.split('.').slice(-1)[0];
 const inputFileStem = inputFile.split('.').slice(0, -1).join();
 const prefix = args.prefix ? args.prefix : '';
 const suffix = args.suffix ? args.suffix : '';
 const outputFile = args.out ? args.out : `${inputFileStem}.env`;
 
-if (!inputFile) {
-  console.log('Invalid usage. Try `convert-json-env --help` for help.');
-  return;
-} else if (inputFileExt !== 'json') {
+if (inputFileExt !== 'json') {
   console.log(
       '❌ This file is not *.json. Try `convert-json-env --help` for help.');
   console.log();

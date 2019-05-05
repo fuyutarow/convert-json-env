@@ -64,15 +64,15 @@ VUE_APP_appId='1:234567890124:web:1234567890abcdef'
 ### Case 3. Standard output for code embedded in javascript.
 In this case, no files are output.
 ```sh
-$ convert-json-env example-firebaseConfig.json --prefix=VUE_APP_ --embed
+$ convert-json-env firebaseConfig.json --prefix=process.env.VUE_APP_ --embed
 {
-  apiKey: VUE_APP_apiKey,
-  authDomain: VUE_APP_authDomain,
-  databaseURL: VUE_APP_databaseURL,
-  projectId: VUE_APP_projectId,
-  storageBucket: VUE_APP_storageBucket,
-  messagingSenderId: VUE_APP_messagingSenderId,
-  appId: VUE_APP_appId
+  apiKey: process.env.VUE_APP_apiKey,
+  authDomain: process.env.VUE_APP_authDomain,
+  databaseURL: process.env.VUE_APP_databaseURL,
+  projectId: process.env.VUE_APP_projectId,
+  storageBucket: process.env.VUE_APP_storageBucket,
+  messagingSenderId: process.env.VUE_APP_messagingSenderId,
+  appId: process.env.VUE_APP_appId
 }
 ```
 
