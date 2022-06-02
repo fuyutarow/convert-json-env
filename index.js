@@ -23,18 +23,24 @@ if (args.help || args.h) {
   return;
 }
 
-const inputFile = args._[0];
+let inputFile = args._[0];
 
 if (!inputFile) {
   console.log('❌ Invalid usage. Try `convert-json-env --help` for help.');
   return;
 }
 
-const inputFileExt = inputFile.split('.').slice(-1)[0];
-const inputFileStem = inputFile.split('.').slice(0, -1).join();
+let inputFileExt = inputFile.split('.').slice(-1)[0];
+let inputFileStem = inputFile.split('.').slice(0, -1).join();
 const prefix = args.prefix ? args.prefix : '';
 const suffix = args.suffix ? args.suffix : '';
 const outputFile = args.out ? args.out : `${inputFileStem}.env`;
+
+if (inputFile === '-') {
+  inputFile = 0;
+  inputFileExt = 'json';
+  inputFileStem = 'stdin';
+}
 
 if (inputFileExt !== 'json') {
   console.log(
