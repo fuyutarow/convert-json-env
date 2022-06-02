@@ -15,6 +15,7 @@ Options:
 \t--prefix\tThe prefix of environment variables in env file.
 \t--suffix\tThe suffix of environment variables in env file.
 \t--embed\tThe suffix of environment variables in env file.
+\t--quiet\tNo extra output.
 `
 
 if (args.help || args.h) {
@@ -56,5 +57,7 @@ if (args.embed) {
                       .map(k => `${prefix}${k}${suffix}='${data[k]}'`)
                       .join('\n');
   fs.writeFileSync(outputFile, `${envdata}\n`);
-  console.log(`✅ ${outputFile} created.`)
+  if (!args.q && !args.quiet) {
+    console.log(`✅ ${outputFile} created.`)
+  }
 }
