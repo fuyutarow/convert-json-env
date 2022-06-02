@@ -15,6 +15,7 @@ Options:
 \t--prefix\tThe prefix of environment variables in env file.
 \t--suffix\tThe suffix of environment variables in env file.
 \t--embed\tThe suffix of environment variables in env file.
+\t--quiet\tNo extra output.
 `
 
 if (args.help || args.h) {
@@ -22,18 +23,25 @@ if (args.help || args.h) {
   return;
 }
 
-const inputFile = args._[0];
+let inputFile = args._[0];
 
 if (!inputFile) {
   console.log('❌ Invalid usage. Try `convert-json-env --help` for help.');
   return;
 }
 
-const inputFileExt = inputFile.split('.').slice(-1)[0];
-const inputFileStem = inputFile.split('.').slice(0, -1).join();
+let inputFileExt = inputFile.split('.').slice(-1)[0];
+let inputFileStem = inputFile.split('.').slice(0, -1).join();
 const prefix = args.prefix ? args.prefix : '';
 const suffix = args.suffix ? args.suffix : '';
-const outputFile = args.out ? args.out : `${inputFileStem}.env`;
+const out = args.out || args._[1];
+const outputFile = out ? (out === '-' ? 1 : out) : `${inputFileStem}.env`;
+
+if (inputFile === '-') {
+  inputFile = 0;
+  inputFileExt = 'json';
+  inputFileStem = 'stdin';
+}
 
 if (inputFileExt !== 'json') {
   console.log(
@@ -56,5 +64,7 @@ if (args.embed) {
                       .map(k => `${prefix}${k}${suffix}='${data[k]}'`)
                       .join('\n');
   fs.writeFileSync(outputFile, `${envdata}\n`);
-  console.log(`✅ ${outputFile} created.`)
+  if (!args.q && !args.quiet) {
+    console.log(`✅ ${outputFile} created.`)
+  }
 }
