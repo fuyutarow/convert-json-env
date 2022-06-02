@@ -34,7 +34,8 @@ let inputFileExt = inputFile.split('.').slice(-1)[0];
 let inputFileStem = inputFile.split('.').slice(0, -1).join();
 const prefix = args.prefix ? args.prefix : '';
 const suffix = args.suffix ? args.suffix : '';
-const outputFile = args.out ? args.out : `${inputFileStem}.env`;
+const out = args.out || args._[1];
+const outputFile = out ? (out === '-' ? 1 : out) : `${inputFileStem}.env`;
 
 if (inputFile === '-') {
   inputFile = 0;
